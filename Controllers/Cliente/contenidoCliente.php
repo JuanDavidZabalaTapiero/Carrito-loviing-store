@@ -27,7 +27,7 @@ class ContenidoCliente
             $stock = $fProducto["stock"];
             ?>
 
-            <select name="cantidad">
+            <select name="cantidad" id="cantidad_select">
                 <?php
 
                 for ($i = 1; $i < $stock + 1; $i++) {
@@ -41,6 +41,24 @@ class ContenidoCliente
 
             <button type="submit">Comprar</button>
         </form>
+
+        <form action="" method="post">
+            <input type="hidden" name="form" value="carrito">
+
+            <input type="hidden" name="cantidad" id="cantidad_carrito" value="1">
+
+            <button type="submit">Agregar al carrito</button>
+        </form>
+
+        <script>
+            let cantidad_select = document.getElementById("cantidad_select");
+
+            let cantidad_carrito = document.getElementById("cantidad_carrito");
+
+            cantidad_select.addEventListener('click', function () {
+                cantidad_carrito.value = cantidad_select.value;
+            });
+        </script>
         <?php
     }
 }

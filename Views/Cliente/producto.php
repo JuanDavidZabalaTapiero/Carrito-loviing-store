@@ -1,5 +1,7 @@
 <?php
 
+$id_cliente = 1;
+
 $id_producto = 1;
 
 // CONTENIDO CLIENTE
@@ -10,13 +12,21 @@ $objContenidoCliente = new ContenidoCliente();
 require_once (__DIR__ . '/../../Controllers/Cliente/compraController.php');
 $objCompraController = new CompraController();
 
+// AGREGAR ITEM AL CARRITO
+require_once (__DIR__ . '/../../Controllers/Cliente/agregarItemCarritoController.php');
+$objAgregarItemCarritoController = new AgregarItemCarritoController();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
 
   $cantidad = $_POST["cantidad"];
 
   if ($form == "comprar") {
-    $objCompraController->comprarProducto(1, $id_producto, $cantidad);
+    $objCompraController->comprarProducto($id_cliente, $id_producto, $cantidad);
+  }
+
+  if ($form == "carrito") {
+    $objAgregarItemCarritoController->agregarItemCarrito($id_cliente, $id_producto, $cantidad);
   }
 }
 
