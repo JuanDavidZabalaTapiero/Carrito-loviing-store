@@ -13,4 +13,4 @@
 
 require_once (__DIR__ . '/consultasCarrito.php');
 $objConsultasCarrito = new ConsultasCarrito();
-$objConsultasCarrito->insertCarrito(1);
+$objConsultasCarrito->updateCarrito(4);

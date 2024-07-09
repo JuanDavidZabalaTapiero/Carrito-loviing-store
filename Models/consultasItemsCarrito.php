@@ -24,7 +24,7 @@ class ConsultasItemsCarrito
 
         $this->objPrepararConsulta->prepararConsulta($insertItemCarrito, $bindValues);
 
-        echo 'ITEM SIS';
+        echo 'Se inserto el item en el carrito <br>';
     }
 
     // READ

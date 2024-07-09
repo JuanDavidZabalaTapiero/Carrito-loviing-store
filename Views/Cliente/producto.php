@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
 
   if ($form == "comprar") {
-    $objProductosController->comprarProducto(1, 5);
+    $objProductosController->comprarProducto(1, 1, 5);
   }
 }
 
