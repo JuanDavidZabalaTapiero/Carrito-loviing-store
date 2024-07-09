@@ -1,12 +1,12 @@
 <?php
 
-require_once (__DIR__ . '/../Models/consultasProductos.php');
+require_once (__DIR__ . '/../../Models/consultasProductos.php');
 
-require_once (__DIR__ . '/../Models/consultasCarrito.php');
+require_once (__DIR__ . '/../../Models/consultasCarrito.php');
 
-require_once (__DIR__ . '/../Models/consultasItemsCarrito.php');
+require_once (__DIR__ . '/../../Models/consultasItemsCarrito.php');
 
-class ProductosController
+class CompraController
 {
     // CONSULTAS DE PRODUCTOS
     public $objConsultasProductos;
@@ -20,7 +20,9 @@ class ProductosController
     public function __construct()
     {
         $this->objConsultasProductos = new ConsultasProductos();
+
         $this->objConsultasCarrito = new ConsultasCarrito();
+
         $this->objConsultasItemsCarrito = new ConsultasItemsCarrito();
     }
 

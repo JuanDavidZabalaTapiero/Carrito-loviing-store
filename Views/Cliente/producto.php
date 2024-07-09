@@ -1,13 +1,13 @@
 <?php
 
-require_once (__DIR__ . '/../../Controllers/productosController.php');
-$objProductosController = new ProductosController();
+require_once (__DIR__ . '/../../Controllers/Cliente/compraController.php');
+$objCompraController = new CompraController();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
 
   if ($form == "comprar") {
-    $objProductosController->comprarProducto(1, 1, 5);
+    $objCompraController->comprarProducto(1, 1, 5);
   }
 }
 
