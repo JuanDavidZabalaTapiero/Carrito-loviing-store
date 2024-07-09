@@ -12,8 +12,6 @@ class ConexionBD
 
             $conexion = new PDO("mysql:host=$host;dbname=$dbName;", $user, $pass);
 
-            echo 'siu';
-
             return $conexion;
         } catch (PDOException $e) {
             echo 'Error al conectarse con la base de datos: ' . $e->getMessage();

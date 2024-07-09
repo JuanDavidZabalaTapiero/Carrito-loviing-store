@@ -1,3 +1,17 @@
+<?php
+
+require_once (__DIR__ . '/../../Controllers/productosController.php');
+$objProductosController = new ProductosController();
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $form = $_POST["form"];
+
+  if ($form == "comprar") {
+    $objProductosController->comprarProducto(1, 5);
+  }
+}
+
+?>
 <!DOCTYPE html>
 
 <!--
@@ -8,6 +22,7 @@
 -->
 
 <html lang="en">
+
 <head>
 
   <!-- ** Basic Page Needs ** -->
@@ -33,30 +48,33 @@
   <link href="plugins/slick/slick.css" rel="stylesheet">
   <link href="plugins/slick/slick-theme.css" rel="stylesheet">
   <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-  
+
   <link href="css/style.css" rel="stylesheet">
 
 </head>
 
 <body class="body-wrapper">
-	<button>Comprar</button>
+  <form action="" method="post">
+    <input type="hidden" name="form" value="comprar">
+    <button type="submit">Comprar</button>
+  </form>
 
-<!-- 
+  <!-- 
 Essential Scripts
 =====================================-->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/popper.min.js"></script>
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
-<script src="plugins/bootstrap/bootstrap-slider.js"></script>
-<script src="plugins/tether/js/tether.min.js"></script>
-<script src="plugins/raty/jquery.raty-fa.js"></script>
-<script src="plugins/slick/slick.min.js"></script>
-<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-<script src="plugins/google-map/map.js" defer></script>
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/popper.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap-slider.js"></script>
+  <script src="plugins/tether/js/tether.min.js"></script>
+  <script src="plugins/raty/jquery.raty-fa.js"></script>
+  <script src="plugins/slick/slick.min.js"></script>
+  <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+  <script src="plugins/google-map/map.js" defer></script>
 
-<script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 
