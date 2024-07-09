@@ -1,13 +1,22 @@
 <?php
 
+$id_producto = 1;
+
+// CONTENIDO CLIENTE
+require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
+$objContenidoCliente = new ContenidoCliente();
+
+// COMPRA
 require_once (__DIR__ . '/../../Controllers/Cliente/compraController.php');
 $objCompraController = new CompraController();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
 
+  $cantidad = $_POST["cantidad"];
+
   if ($form == "comprar") {
-    $objCompraController->comprarProducto(1, 1, 5);
+    $objCompraController->comprarProducto(1, $id_producto, $cantidad);
   }
 }
 
@@ -54,10 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body class="body-wrapper">
-  <form action="" method="post">
-    <input type="hidden" name="form" value="comprar">
-    <button type="submit">Comprar</button>
-  </form>
+  <?php
+  $objContenidoCliente->showProducto($id_producto);
+  ?>
 
   <!-- 
 Essential Scripts

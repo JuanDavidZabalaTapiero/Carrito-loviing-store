@@ -14,6 +14,18 @@ class ConsultasProductos
     // CREATE
 
     // READ
+    public function selectProducto($id_producto)
+    {
+        $selectProducto = "SELECT * FROM productos WHERE id_producto = :id_producto";
+
+        $bindValues = [
+            ':id_producto' => $id_producto
+        ];
+
+        $resultadoSelectProducto = $this->objPrepararConsulta->prepararConsulta($selectProducto, $bindValues);
+
+        return $resultadoSelectProducto->fetch();
+    }
 
     // UPDATE
     public function updateProducto($id_producto, $cantidad)

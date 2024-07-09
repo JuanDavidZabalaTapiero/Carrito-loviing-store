@@ -1,7 +1,6 @@
 <?php
 
-require_once (__DIR__ . '/../../Controllers/productosController.php');
-$objProductosController = new ProductosController();
+require_once (__DIR__ . '/../../Controllers/Cliente/compraController.php');
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $form = $_POST["form"];
