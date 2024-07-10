@@ -11,6 +11,7 @@ class PrepararConsulta
     public function __construct()
     {
         $this->objConexionBD = new ConexionBD();
+        
         $this->conexion = $this->objConexionBD->getConexion();
     }
 

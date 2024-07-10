@@ -50,13 +50,29 @@ class CompraController
             $this->objConsultasItemsCarrito->insertItemCarrito($id_carrito, $id_producto, $cantidad);
         }
 
-        // ACTUALIZO LA CANTIDAD QUE SE TIENE DEL PRODUCTO
-        $this->objConsultasItemsCarrito->updateItemCarrito($id_producto, $id_carrito, $cantidad);
+        // VERIFICO SI EL CARRITO TIENE MÁS DE 1 ITEM
 
-        // ACTUALIZO EL ESTADO DEL CARRITO
-        $this->objConsultasCarrito->updateCarrito($id_carrito);
+        $arraySelectItemsCarrito = $this->objConsultasItemsCarrito->selectItemsCarrito($id_carrito);
 
-        // ACTUALIZO EL STOCK DEL PRODUCTO
-        $this->objConsultasProductos->updateProducto($id_producto, $cantidad);
+        $filas = $arraySelectItemsCarrito['filas'];
+
+        if ($filas == 1) {
+            // ACTUALIZO LA CANTIDAD QUE SE TIENE DEL PRODUCTO
+            $this->objConsultasItemsCarrito->updateItemCarrito($id_producto, $id_carrito, $cantidad);
+
+            // ACTUALIZO EL ESTADO DEL CARRITO
+            $this->objConsultasCarrito->updateCarrito($id_carrito);
+
+            // ACTUALIZO EL STOCK DEL PRODUCTO
+            $this->objConsultasProductos->updateProducto($id_producto, $cantidad);
+        }
+
+        if ($filas == 2) {
+            ?>
+            <script>
+                location.href = "../../Views/Cliente/carrito.php";
+            </script>
+            <?php
+        }
     }
 }
