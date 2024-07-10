@@ -41,8 +41,17 @@ class CompraController
             $id_carrito = $fCarrito["id_carrito"];
         }
 
-        // INSERTO EL ITEM EN EL CARRITO
-        $this->objConsultasItemsCarrito->insertItemCarrito($id_carrito, $id_producto, $cantidad);
+        // VERIFICO SI EL ITEM YA ESTÁ EN EL CARRITO
+        $fItem = $this->objConsultasItemsCarrito->selectItemCarrito($id_producto, $id_carrito);
+
+        if (!$fItem) {
+
+            // INSERTO EL ITEM EN EL CARRITO
+            $this->objConsultasItemsCarrito->insertItemCarrito($id_carrito, $id_producto, $cantidad);
+        }
+
+        // ACTUALIZO LA CANTIDAD QUE SE TIENE DEL PRODUCTO
+        $this->objConsultasItemsCarrito->updateItemCarrito($id_producto, $id_carrito, $cantidad);
 
         // ACTUALIZO EL ESTADO DEL CARRITO
         $this->objConsultasCarrito->updateCarrito($id_carrito);

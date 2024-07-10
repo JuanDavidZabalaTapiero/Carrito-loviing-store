@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <meta name="author" content="Themefisher">
   <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
 
+  <!-- LINKS -->
   <?php
   $objContenidoCliente->showLinks();
   ?>

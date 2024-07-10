@@ -154,7 +154,7 @@ class ContenidoCliente
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">Carrito</a>
+                                        <a class="nav-link" href="carrito.php">Carrito</a>
                                     </li>
                                 </ul>
 
@@ -206,7 +206,7 @@ class ContenidoCliente
                 ?>
             </select>
 
-            <button type="submit">Comprar</button>
+            <button type="submit" class="btn_comprar">Comprar</button>
         </form>
 
         <form action="" method="post">
@@ -214,7 +214,7 @@ class ContenidoCliente
 
             <input type="hidden" name="cantidad" id="cantidad_carrito" value="1">
 
-            <button type="submit">Agregar al carrito</button>
+            <button type="submit" class="btn_carrito">Agregar al carrito</button>
         </form>
 
         <script>
@@ -222,9 +222,12 @@ class ContenidoCliente
 
             let cantidad_carrito = document.getElementById("cantidad_carrito");
 
-            cantidad_select.addEventListener('click', function () {
+            let btn_carrito = document.querySelector(".btn_carrito");
+
+            btn_carrito.addEventListener('click', function () {
                 cantidad_carrito.value = cantidad_select.value;
-            });
+            })
+
         </script>
         <?php
     }

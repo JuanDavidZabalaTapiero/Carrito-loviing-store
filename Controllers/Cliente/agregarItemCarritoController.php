@@ -35,7 +35,16 @@ class AgregarItemCarritoController
             $id_carrito = $fCarrito["id_carrito"];
         }
 
-        // INSERTO EL ITEM AL CARRITO
-        $this->objConsultasItemsCarrito->insertItemCarrito($id_carrito, $id_producto, $cantidad);
+        // VERIFICO SI EL ITEM YA ESTÁ EN EL CARRITO
+        $fItem = $this->objConsultasItemsCarrito->selectItemCarrito($id_producto, $id_carrito);
+
+        if (!$fItem) {
+            // INSERTO EL ITEM AL CARRITO
+            $this->objConsultasItemsCarrito->insertItemCarrito($id_carrito, $id_producto, $cantidad);
+        } else {
+
+            // ACTUALIZO LA CANTIDAD DEL ITEM
+            $this->objConsultasItemsCarrito->updateItemCarrito($id_producto, $id_carrito, $cantidad);
+        }
     }
 }

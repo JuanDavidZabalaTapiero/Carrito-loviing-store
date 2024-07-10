@@ -58,7 +58,36 @@ class ConsultasItemsCarrito
         }
     }
 
+    public function selectItemCarrito($cod_producto, $cod_carrito)
+    {
+        $selectItemCarrito = "SELECT * FROM items_carrito WHERE cod_producto = :cod_producto AND cod_carrito = :cod_carrito";
+
+        $bindValues = [
+            ':cod_producto' => $cod_producto,
+            ':cod_carrito' => $cod_carrito
+        ];
+
+        $resultSelectItemCarrito = $this->objPrepararConsulta->prepararConsulta($selectItemCarrito, $bindValues);
+
+        return $resultSelectItemCarrito->fetch();
+    }
+
     // UPDATE
+    public function updateItemCarrito($cod_producto, $cod_carrito, $cantidad)
+    {
+        $updateItemCarrito = "UPDATE items_carrito SET cantidad = :cantidad WHERE cod_producto = :cod_producto AND cod_carrito = :cod_carrito";
+
+        $bindValues = [
+            ':cod_producto' => $cod_producto,
+            ':cod_carrito' => $cod_carrito,
+            ':cantidad' => $cantidad
+        ];
+
+        $this->objPrepararConsulta->prepararConsulta($updateItemCarrito, $bindValues);
+
+        echo 'Se actualizo la cantidad del producto en el carrito <br>';
+
+    }
 
     // DELETE
 }

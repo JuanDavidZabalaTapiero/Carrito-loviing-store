@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2024 a las 21:20:44
+-- Tiempo de generación: 10-07-2024 a las 02:10:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -38,7 +38,7 @@ CREATE TABLE `carrito` (
 --
 
 INSERT INTO `carrito` (`id_carrito`, `cod_cliente`, `compra_realizada`) VALUES
-(1, 1, 'No');
+(15, 1, 'Si');
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,8 @@ CREATE TABLE `items_carrito` (
 --
 
 INSERT INTO `items_carrito` (`id_item`, `cod_carrito`, `cod_producto`, `cantidad`) VALUES
-(1, 1, 1, 5);
+(18, 15, 1, 2),
+(20, 15, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `stock`) VALUES
-(1, 'Doritos', 40);
+(1, 'Doritos', 44),
+(3, 'ps5', 28);
 
 -- --------------------------------------------------------
 
@@ -136,19 +138,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `items_carrito`
 --
 ALTER TABLE `items_carrito`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
