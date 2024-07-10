@@ -261,6 +261,25 @@ class ContenidoCliente
                 ?>
                 <p><?php echo $fItem["nombre"] ?></p>
 
+                <p>Cantidad:</p>
+                <select name="cantidadCarrito" id="selectCantidad">
+                    <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+
+                    <!-- VERIFICO EL STOCK DEL PRODUCTO -->
+                    <?php
+                    $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+
+                    $stock = $fProducto["stock"];
+
+                    // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
+                    for ($i = 1; $i < $stock + 1; $i++) {
+                        ?>
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+
                 <form action="" method="post">
                     <input type="hidden" name="form" value="comprar_carrito">
 
@@ -275,6 +294,26 @@ class ContenidoCliente
                 foreach ($fItems as $fItem) {
                     ?>
                     <p><?php echo $fItem["nombre"] ?></p>
+
+                    <p>Cantidad:</p>
+                    <select name="cantidadCarrito" id="selectCantidad">
+                        <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+
+                        <!-- VERIFICO EL STOCK DEL PRODUCTO -->
+                        <?php
+                        $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+
+                        $stock = $fProducto["stock"];
+
+                        // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
+                        for ($i = 1; $i < $stock + 1; $i++) {
+                            ?>
+                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <?php
+                        }
+                        ?>
+
+                    </select>
                     <?php
                 }
 
