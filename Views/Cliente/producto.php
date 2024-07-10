@@ -2,7 +2,7 @@
 
 $id_cliente = 1;
 
-$id_producto = 1;
+$id_producto = $_GET["id_producto"];
 
 // CONTENIDO CLIENTE
 require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');

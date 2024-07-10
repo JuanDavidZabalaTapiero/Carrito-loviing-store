@@ -27,6 +27,32 @@ class ConsultasProductos
         return $resultadoSelectProducto->fetch();
     }
 
+    public function selectProductos()
+    {
+        // CONSULTA
+        $selectProductos = "SELECT * FROM productos";
+
+        $resultSelectProductos = $this->objPrepararConsulta->prepararConsulta($selectProductos, 0);
+
+        if ($resultSelectProductos->rowCount() == 0) {
+            return [
+                'filas' => 0
+            ];
+        }
+
+        if ($resultSelectProductos->rowCount() == 1) {
+            return [
+                'resultado' => $resultSelectProductos->fetch(),
+                'filas' => 1
+            ];
+        } else {
+            return [
+                'resultados' => $resultSelectProductos->fetchAll(),
+                'filas' => 2
+            ];
+        }
+    }
+
     // UPDATE
     public function updateProducto($id_producto, $cantidad)
     {
