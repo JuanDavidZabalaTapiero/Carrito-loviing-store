@@ -1,14 +1,32 @@
 <?php
 
+// CONSULTAS PRODUCTOS
 require_once (__DIR__ . '/../../Models/consultasProductos.php');
+
+// CONSULTAS CARRITO
+require_once (__DIR__ . '/../../Models/consultasCarrito.php');
+
+// CONSULTAS ITEMS_CARRITO
+require_once (__DIR__ . '/../../Models/consultasItemsCarrito.php');
 
 class ContenidoCliente
 {
+    // PARA CONSULTAR PRODUCTOS
     public $objConsultasProductos;
+
+    // PARA CONSULTAR CARRITO
+    public $objConsultasCarrito;
+
+    // PARA CONSULTAR ITEMS_CARRITO
+    public $objConsultasItemsCarrito;
 
     public function __construct()
     {
         $this->objConsultasProductos = new ConsultasProductos();
+
+        $this->objConsultasCarrito = new ConsultasCarrito();
+
+        $this->objConsultasItemsCarrito = new ConsultasItemsCarrito();
     }
 
     // CONEXIONES <LINK>
@@ -158,6 +176,7 @@ class ContenidoCliente
         <?php
     }
 
+    // PRODUCTO.PHP
     // MAIN
     public function showProducto($id_producto)
     {
@@ -208,6 +227,39 @@ class ContenidoCliente
             });
         </script>
         <?php
+    }
+
+    // CARRITO.PHP
+    // MAIN
+    public function showCarrito($cod_cliente)
+    {
+        // VERIFICO QUE EL CARRITO EXISTA
+        $fCarrito = $this->objConsultasCarrito->selectCarrito($cod_cliente);
+
+        if (!$fCarrito) {
+            ?>
+            <p>No existe el carrito</p>
+            <?php
+        } else {
+            $id_carrito = $fCarrito["id_carrito"];
+
+            // VERIFICO QUE EL CARRITO TENGA ITEMS
+            $arraySelectItems = $this->objConsultasItemsCarrito->selectItemsCarrito($id_carrito);
+
+            $filas = $arraySelectItems['filas'];
+
+            if ($filas == 0) {
+                echo 'No tienes productos en tu carrito';
+            } else {
+                ?>
+                <form action="" method="post">
+                    <input type="hidden" name="form" value="comprar_carrito">
+
+                    <button type="submit">Comprar carrito</button>
+                </form>
+                <?php
+            }
+        }
     }
 
     // CONEXION <SCRIPT>

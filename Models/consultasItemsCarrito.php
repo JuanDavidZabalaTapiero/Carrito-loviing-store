@@ -28,6 +28,35 @@ class ConsultasItemsCarrito
     }
 
     // READ
+    public function selectItemsCarrito($cod_carrito)
+    {
+        $selectItemsCarrito = "SELECT * FROM items_carrito WHERE cod_carrito = :cod_carrito";
+
+        $bindValues = [
+            ':cod_carrito' => $cod_carrito
+        ];
+
+        $resultSelectItemsCarrito = $this->objPrepararConsulta->prepararConsulta($selectItemsCarrito, $bindValues);
+
+        if ($resultSelectItemsCarrito->rowCount() == 0) {
+            return [
+                'filas' => 0
+            ];
+        }
+
+        if ($resultSelectItemsCarrito->rowCount() == 1) {
+            return [
+                'resultado' => $resultSelectItemsCarrito->fetch(),
+                'filas' => 1
+            ];
+
+        } else {
+            return [
+                'resultados' => $resultSelectItemsCarrito->fetchAll(),
+                'filas' => 2
+            ];
+        }
+    }
 
     // UPDATE
 
