@@ -309,6 +309,17 @@ class ContenidoCliente
                     });
                 </script>
 
+                <!-- PARA ELIMINAR EL ITEM DEL CARRITO -->
+                <form action="" method="post">
+                    <!-- HIDDEN -->
+                    <input type="hidden" name="form" value="delete_item">
+
+                    <!-- ID DEL PRODUCTO -->
+                    <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                    <button type="submit">Eliminar del carrito</button>
+                </form>
+
                 <form action="" method="post">
                     <input type="hidden" name="form" value="comprar_carrito">
 
@@ -355,6 +366,17 @@ class ContenidoCliente
                             }
                             ?>
                         </select>
+                    </form>
+
+                    <!-- PARA ELIMINAR EL ITEM DEL CARRITO -->
+                    <form action="" method="post">
+                        <!-- HIDDEN -->
+                        <input type="hidden" name="form" value="delete_item">
+
+                        <!-- ID DEL PRODUCTO -->
+                        <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                        <button type="submit">Eliminar del carrito</button>
                     </form>
                     <?php
                 }

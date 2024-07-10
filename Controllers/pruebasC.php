@@ -13,6 +13,10 @@
 // $objComprarCarritoController = new ComprarCarritoController();
 // $objComprarCarritoController->comprarCarrito(1);
 
-require_once (__DIR__ . '/Cliente/updateCantidadItemController.php');
-$objUpdateCantidadItemController = new UpdateCantidadItemController();
-$objUpdateCantidadItemController->updateCantidadItem(1, 1, 9);
+// require_once (__DIR__ . '/Cliente/updateCantidadItemController.php');
+// $objUpdateCantidadItemController = new UpdateCantidadItemController();
+// $objUpdateCantidadItemController->updateCantidadItem(1, 1, 9);
+
+require_once (__DIR__ . '/Cliente/deleteItemCarritoController.php');
+$objDeleteItemCarritoController = new DeleteItemCarritoController();
+$objDeleteItemCarritoController->deleteItemCarrito(1, 1);

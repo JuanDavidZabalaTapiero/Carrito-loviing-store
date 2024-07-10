@@ -2,13 +2,20 @@
 
 require_once (__DIR__ . '/prepararConsulta.php');
 
+require_once (__DIR__ . '/consultasCarrito.php');
+
 class ConsultasItemsCarrito
 {
     public $objPrepararConsulta;
 
+    // PARA CONSULTAS DEL CARRITO
+    public $objConsultasCarrito;
+
     public function __construct()
     {
         $this->objPrepararConsulta = new PrepararConsulta();
+
+        $this->objConsultasCarrito = new ConsultasCarrito();
     }
 
     // CREATE
@@ -93,4 +100,25 @@ class ConsultasItemsCarrito
     }
 
     // DELETE
+    public function deleteItemCarrito($cod_cliente, $cod_producto)
+    {
+        // CONSULTA
+        $deleteItemCarrito = "DELETE FROM items_carrito WHERE cod_producto = :cod_producto AND cod_carrito = :cod_carrito";
+
+        // CONSULTO EL CARRITO NO COMPRADO
+        $fCarrito = $this->objConsultasCarrito->selectCarrito($cod_cliente);
+
+        // ID DEL CARRITO
+        $id_carrito = $fCarrito["id_carrito"];
+
+        // BINDVALUES
+        $bindValues = [
+            ':cod_producto' => $cod_producto,
+            ':cod_carrito' => $id_carrito
+        ];
+
+        $this->objPrepararConsulta->prepararConsulta($deleteItemCarrito, $bindValues);
+
+        echo 'Se eliminó el producto del carrito';
+    }
 }

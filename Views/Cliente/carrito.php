@@ -14,6 +14,10 @@ $objComprarCarritoController = new ComprarCarritoController();
 require_once (__DIR__ . '/../../Controllers/Cliente/updateCantidadItemController.php');
 $objUpdateCantidadItemController = new UpdateCantidadItemController();
 
+// DELTE ITEM DEL CARRITO CONTROLLER
+require_once (__DIR__ . '/../../Controllers/Cliente/deleteItemCarritoController.php');
+$objDeleteItemCarritoController = new DeleteItemCarritoController();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $form = $_POST["form"];
 
@@ -27,6 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $cantidad = $_POST["cantidad"];
 
         $objUpdateCantidadItemController->updateCantidadItem($id_cliente, $id_producto, $cantidad);
+    }
+
+    if ($form == "delete_item") {
+        $id_producto = $_POST["id_producto"];
+
+        $objDeleteItemCarritoController->deleteItemCarrito($id_cliente, $id_producto);
     }
 }
 ?>

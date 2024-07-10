@@ -10,7 +10,7 @@
 
 require_once (__DIR__ . '/consultasItemsCarrito.php');
 $objConsultasItemsCarrito = new ConsultasItemsCarrito();
-$objConsultasItemsCarrito->updateItemCarrito(1, 17, 7);
+$objConsultasItemsCarrito->deleteItemCarrito(1, 1);
 
 // require_once (__DIR__ . '/consultasCarrito.php');
 // $objConsultasCarrito = new ConsultasCarrito();
