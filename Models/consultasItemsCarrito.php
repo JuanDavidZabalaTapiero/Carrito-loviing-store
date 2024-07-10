@@ -30,7 +30,10 @@ class ConsultasItemsCarrito
     // READ
     public function selectItemsCarrito($cod_carrito)
     {
-        $selectItemsCarrito = "SELECT * FROM items_carrito WHERE cod_carrito = :cod_carrito";
+        $selectItemsCarrito = "SELECT * FROM 
+        items_carrito ic
+        INNER JOIN productos p ON ic.cod_producto = p.id_producto
+        WHERE cod_carrito = :cod_carrito";
 
         $bindValues = [
             ':cod_carrito' => $cod_carrito

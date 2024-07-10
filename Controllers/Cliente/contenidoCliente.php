@@ -253,7 +253,31 @@ class ContenidoCliente
 
             if ($filas == 0) {
                 echo 'No tienes productos en tu carrito';
-            } else {
+            }
+
+            if ($filas == 1) {
+                $fItem = $arraySelectItems['resultado'];
+
+                ?>
+                <p><?php echo $fItem["nombre"] ?></p>
+
+                <form action="" method="post">
+                    <input type="hidden" name="form" value="comprar_carrito">
+
+                    <button type="submit">Comprar carrito</button>
+                </form>
+                <?php
+            }
+
+            if ($filas == 2) {
+                $fItems = $arraySelectItems['resultados'];
+
+                foreach ($fItems as $fItem) {
+                    ?>
+                    <p><?php echo $fItem["nombre"] ?></p>
+                    <?php
+                }
+
                 ?>
                 <form action="" method="post">
                     <input type="hidden" name="form" value="comprar_carrito">
