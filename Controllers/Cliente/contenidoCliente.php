@@ -46,6 +46,9 @@ class ContenidoCliente
         <link href="../website_externo/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 
         <link href="../website_externo/css/style.css" rel="stylesheet">
+
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <?php
     }
 
@@ -262,23 +265,48 @@ class ContenidoCliente
                 <p><?php echo $fItem["nombre"] ?></p>
 
                 <p>Cantidad:</p>
-                <select name="cantidadCarrito" id="selectCantidad">
-                    <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+                <form action="" method="post" id="formCantidadCarrito">
+                    <input type="hidden" name="form" value="cantidad_carrito">
 
-                    <!-- VERIFICO EL STOCK DEL PRODUCTO -->
-                    <?php
-                    $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+                    <!-- ID PRODUCTO -->
+                    <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
 
-                    $stock = $fProducto["stock"];
+                    <!-- CANTIDAD -->
+                    <input type="hidden" name="cantidad" id="cantidad_hidden" value="<?php echo $fItem["cantidad"] ?>">
 
-                    // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
-                    for ($i = 1; $i < $stock + 1; $i++) {
-                        ?>
-                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <select name="cantidadCarrito" id="selectCantidad">
+                        <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+
+                        <!-- VERIFICO EL STOCK DEL PRODUCTO -->
                         <?php
-                    }
-                    ?>
-                </select>
+                        $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+
+                        $stock = $fProducto["stock"];
+
+                        // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
+                        for ($i = 1; $i < $stock + 1; $i++) {
+                            ?>
+                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </form>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#selectCantidad').on('change', function () {
+                            let cantidad_hidden = document.getElementById("cantidad_hidden");
+
+                            let selectCantidad = document.getElementById("selectCantidad");
+
+                            cantidad_hidden.value = selectCantidad.value;
+
+                            $('#formCantidadCarrito').submit();
+
+                        });
+                    });
+                </script>
 
                 <form action="" method="post">
                     <input type="hidden" name="form" value="comprar_carrito">
@@ -296,24 +324,29 @@ class ContenidoCliente
                     <p><?php echo $fItem["nombre"] ?></p>
 
                     <p>Cantidad:</p>
-                    <select name="cantidadCarrito" id="selectCantidad">
-                        <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+                    <form action="" method="post">
+                        <select name="cantidadCarrito" id="selectCantidad">
+                            <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
 
-                        <!-- VERIFICO EL STOCK DEL PRODUCTO -->
-                        <?php
-                        $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+                            <!-- ID PRODUCTO -->
+                            <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
 
-                        $stock = $fProducto["stock"];
-
-                        // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
-                        for ($i = 1; $i < $stock + 1; $i++) {
-                            ?>
-                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <!-- VERIFICO EL STOCK DEL PRODUCTO -->
                             <?php
-                        }
-                        ?>
+                            $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
 
-                    </select>
+                            $stock = $fProducto["stock"];
+
+                            // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
+                            for ($i = 1; $i < $stock + 1; $i++) {
+                                ?>
+                                <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                <?php
+                            }
+                            ?>
+
+                        </select>
+                    </form>
                     <?php
                 }
 

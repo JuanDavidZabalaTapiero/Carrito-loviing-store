@@ -10,11 +10,23 @@ $objContenidoCliente = new ContenidoCliente();
 require_once (__DIR__ . '/../../Controllers/Cliente/comprarCarritoController.php');
 $objComprarCarritoController = new ComprarCarritoController();
 
+// UPDATE CANTIDAD DEL ITEM EN EL CARRITO CONTROLLER
+require_once (__DIR__ . '/../../Controllers/Cliente/updateCantidadItemController.php');
+$objUpdateCantidadItemController = new UpdateCantidadItemController();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $form = $_POST["form"];
 
     if ($form == "comprar_carrito") {
         $objComprarCarritoController->comprarCarrito($id_cliente);
+    }
+
+    if ($form == "cantidad_carrito") {
+        $id_producto = $_POST["id_producto"];
+
+        $cantidad = $_POST["cantidad"];
+
+        $objUpdateCantidadItemController->updateCantidadItem($id_cliente, $id_producto, $cantidad);
     }
 }
 ?>
