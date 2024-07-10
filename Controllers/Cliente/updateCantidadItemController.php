@@ -29,5 +29,6 @@ class UpdateCantidadItemController
         $id_carrito = $fCarrito["id_carrito"];
 
         $this->objConsultasItemsCarrito->updateItemCarrito($cod_producto, $id_carrito, $cantidad);
+
     }
 }

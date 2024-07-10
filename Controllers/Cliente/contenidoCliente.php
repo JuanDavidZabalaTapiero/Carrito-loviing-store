@@ -266,6 +266,7 @@ class ContenidoCliente
 
                 <p>Cantidad:</p>
                 <form action="" method="post" id="formCantidadCarrito">
+                    <!-- HIDDEN -->
                     <input type="hidden" name="form" value="cantidad_carrito">
 
                     <!-- ID PRODUCTO -->
@@ -319,22 +320,31 @@ class ContenidoCliente
             if ($filas == 2) {
                 $fItems = $arraySelectItems['resultados'];
 
-                foreach ($fItems as $fItem) {
+                foreach ($fItems as $index => $fItem) {
+                    // Generar identificadores únicos usando el índice
+                    $formId = "formCantidadCarrito_" . $index;
+                    $selectId = "selectCantidad_" . $index;
+                    $hiddenId = "cantidad_hidden_" . $index;
                     ?>
                     <p><?php echo $fItem["nombre"] ?></p>
 
                     <p>Cantidad:</p>
-                    <form action="" method="post">
-                        <select name="cantidadCarrito" id="selectCantidad">
-                            <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+                    <form action="" method="post" id="<?php echo $formId; ?>">
+                        <!-- HIDDEN -->
+                        <input type="hidden" name="form" value="cantidad_carrito">
 
-                            <!-- ID PRODUCTO -->
-                            <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+                        <!-- ID PRODUCTO -->
+                        <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                        <!-- CANTIDAD -->
+                        <input type="hidden" name="cantidad" id="<?php echo $hiddenId; ?>" value="<?php echo $fItem["cantidad"] ?>">
+
+                        <select name="cantidadCarrito" id="<?php echo $selectId; ?>">
+                            <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
 
                             <!-- VERIFICO EL STOCK DEL PRODUCTO -->
                             <?php
                             $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
-
                             $stock = $fProducto["stock"];
 
                             // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
@@ -344,20 +354,38 @@ class ContenidoCliente
                                 <?php
                             }
                             ?>
-
                         </select>
                     </form>
                     <?php
                 }
-
                 ?>
                 <form action="" method="post">
                     <input type="hidden" name="form" value="comprar_carrito">
-
                     <button type="submit">Comprar carrito</button>
                 </form>
+
+                <script>
+                    $(document).ready(function () {
+                        // Añadir un evento change para cada select dinámicamente
+                        $('select[id^="selectCantidad_"]').on('change', function () {
+                            // Obtener el índice del select actual
+                            var index = $(this).attr('id').split('_')[1];
+
+                            // Obtener los elementos específicos del formulario usando el índice
+                            var formId = "#formCantidadCarrito_" + index;
+                            var hiddenId = "#cantidad_hidden_" + index;
+
+                            // Actualizar el valor del input hidden
+                            $(hiddenId).val($(this).val());
+
+                            // Enviar el formulario
+                            $(formId).submit();
+                        });
+                    });
+                </script>
                 <?php
             }
+
         }
     }
 
