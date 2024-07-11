@@ -1,6 +1,7 @@
 <?php
 
-$id_cliente = 1;
+session_start();
+$id_cliente = $_SESSION["id_user"];
 
 $id_producto = $_GET["id_producto"];
 
@@ -76,9 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <!-- FOOTER -->
 
   <!-- SCRIPTS -->
-   <?php
-   $objContenidoCliente->showScripts();
-   ?>
+  <?php
+  $objContenidoCliente->showScripts();
+  ?>
 
 </body>
 

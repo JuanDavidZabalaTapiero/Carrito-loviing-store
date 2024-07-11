@@ -17,6 +17,10 @@
 // $objUpdateCantidadItemController = new UpdateCantidadItemController();
 // $objUpdateCantidadItemController->updateCantidadItem(1, 1, 9);
 
-require_once (__DIR__ . '/Cliente/deleteItemCarritoController.php');
-$objDeleteItemCarritoController = new DeleteItemCarritoController();
-$objDeleteItemCarritoController->deleteItemCarrito(1, 1);
+// require_once (__DIR__ . '/Cliente/deleteItemCarritoController.php');
+// $objDeleteItemCarritoController = new DeleteItemCarritoController();
+// $objDeleteItemCarritoController->deleteItemCarrito(1, 1);
+
+require_once (__DIR__ . '/Cliente/iniciarSesionController.php');
+$objIniciarSesion = new IniciarSesionController();
+$objIniciarSesion->iniciarSesion('Juan');

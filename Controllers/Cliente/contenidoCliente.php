@@ -40,7 +40,6 @@ class ContenidoCliente
          =====================================-->
         <link href="../website_externo/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
         <link href="../website_externo/plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
-        <link href="../website_externo/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="../website_externo/plugins/slick/slick.css" rel="stylesheet">
         <link href="../website_externo/plugins/slick/slick-theme.css" rel="stylesheet">
         <link href="../website_externo/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
@@ -165,6 +164,20 @@ class ContenidoCliente
                                         <a class="nav-link" href="carrito.php">
                                             <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ca5d1e;"></i>
                                         </a>
+                                    </li>
+
+                                    <!-- PERFIL DEL CLIENTE -->
+                                    <li class="nav-item dropdown dropdown-slide @@listing">
+                                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Perfil <span><i class="fa fa-angle-down"></i></span>
+                                        </a>
+
+                                        <!-- Dropdown list -->
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="../../index.php"><i
+                                                        class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
+                                        </ul>
                                     </li>
                                 </ul>
 

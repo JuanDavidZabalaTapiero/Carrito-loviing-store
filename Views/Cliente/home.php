@@ -419,7 +419,7 @@ $objContenidoCliente = new ContenidoCliente();
 				<div class="col-lg-6">
 					<!-- Social Icons -->
 					<ul class="social-media-icons text-center text-lg-right">
-						<li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher"></a></li>
+						<li><a class="fa-brands fa-facebook-f" href="https://www.facebook.com/themefisher"></a></li>
 						<li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher"></a></li>
 						<li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher"></a></li>
 						<li><a class="fa fa-github-alt" href="https://www.github.com/themefisher"></a></li>
