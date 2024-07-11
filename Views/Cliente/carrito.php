@@ -2,6 +2,8 @@
 
 $id_cliente = 1;
 
+$current_page_name = basename($_SERVER['PHP_SELF']);
+
 // CONTENIDO CLIENTE
 require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
@@ -57,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
     <!-- HEADER -->
     <?php
-    $objContenidoCliente->showHeader();
+    $objContenidoCliente->showHeader($current_page_name);
     ?>
 
     <!-- MAIN -->

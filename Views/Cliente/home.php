@@ -1,5 +1,7 @@
 <?php
 
+$current_page_name = basename($_SERVER['PHP_SELF']);
+
 // CONTENIDO CLIENTE
 require_once (__DIR__ . '/../../Controllers/Cliente/contenidoCliente.php');
 $objContenidoCliente = new ContenidoCliente();
@@ -43,7 +45,7 @@ $objContenidoCliente = new ContenidoCliente();
 
 	<!-- HEADER -->
 	<?php
-	$objContenidoCliente->showHeader();
+	$objContenidoCliente->showHeader($current_page_name);
 	?>
 
 	<!--===============================

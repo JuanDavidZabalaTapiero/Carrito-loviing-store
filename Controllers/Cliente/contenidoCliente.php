@@ -53,7 +53,7 @@ class ContenidoCliente
     }
 
     // HEADER
-    public function showHeader()
+    public function showHeader($current_page_name)
     {
         ?>
         <header>
@@ -61,7 +61,7 @@ class ContenidoCliente
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light navigation">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="home.php">
                                 <img src="../website_externo/images/logo.png" alt="">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -71,7 +71,7 @@ class ContenidoCliente
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto main-nav ">
-                                    <li class="nav-item active">
+                                    <li class="nav-item <?php echo ($current_page_name == "home.php") ? 'active' : ''; ?>">
                                         <a class="nav-link" href="home.php">Home</a>
                                     </li>
 
@@ -156,7 +156,7 @@ class ContenidoCliente
                                         </ul>
                                     </li>
 
-                                    <li class="nav-item">
+                                    <li class="nav-item <?php echo ($current_page_name == "carrito.php") ? 'active' : ''; ?>">
                                         <a class="nav-link" href="carrito.php">Carrito</a>
                                     </li>
                                 </ul>
