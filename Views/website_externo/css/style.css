@@ -1486,6 +1486,8 @@ ul.pagination .active a {
 
 .nice-select .list {
   border-radius: 0;
+  height: 240px;
+  overflow-y: scroll;
 }
 
 .arrow-right,
