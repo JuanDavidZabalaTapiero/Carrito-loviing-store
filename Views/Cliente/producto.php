@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body class="body-wrapper">
   <!-- HEADER -->
   <?php
-  $objContenidoCliente->showHeader();
+  $objContenidoCliente->showHeader(0);
   ?>
 
   <!-- MAIN -->

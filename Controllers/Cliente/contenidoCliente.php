@@ -45,6 +45,11 @@ class ContenidoCliente
         <link href="../website_externo/plugins/slick/slick-theme.css" rel="stylesheet">
         <link href="../website_externo/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 
+        <!-- FONTAWESOME CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <link href="../website_externo/css/style.css" rel="stylesheet">
 
         <!-- JQuery -->
@@ -157,7 +162,9 @@ class ContenidoCliente
                                     </li>
 
                                     <li class="nav-item <?php echo ($current_page_name == "carrito.php") ? 'active' : ''; ?>">
-                                        <a class="nav-link" href="carrito.php">Carrito</a>
+                                        <a class="nav-link" href="carrito.php">
+                                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ca5d1e;"></i>
+                                        </a>
                                     </li>
                                 </ul>
 
@@ -187,51 +194,57 @@ class ContenidoCliente
         $fProducto = $this->objConsultasProductos->selectProducto($id_producto);
 
         ?>
-        <p><?php echo $fProducto["nombre"] ?></p>
+        <section class="section">
+            <div class="container">
+                <p><?php echo $fProducto["nombre"] ?></p>
 
-        <form action="" method="post">
-            <input type="hidden" name="form" value="comprar">
+                <p>En stock: <?php echo $fProducto["stock"] ?></p>
 
-            <?php
-            // CONSULTO EL STOCK DEL PRODUCTO PARA ELEGIR LA CANTIDAD
-            $stock = $fProducto["stock"];
-            ?>
+                <form action="" method="post">
+                    <input type="hidden" name="form" value="comprar">
 
-            <select name="cantidad" id="cantidad_select">
-                <?php
-
-                for ($i = 1; $i < $stock + 1; $i++) {
-                    ?>
-                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
                     <?php
-                }
+                    // CONSULTO EL STOCK DEL PRODUCTO PARA ELEGIR LA CANTIDAD
+                    $stock = $fProducto["stock"];
+                    ?>
 
-                ?>
-            </select>
+                    <select name="cantidad" id="cantidad_select">
+                        <?php
 
-            <button type="submit" class="btn_comprar">Comprar</button>
-        </form>
+                        for ($i = 1; $i < $stock + 1; $i++) {
+                            ?>
+                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <?php
+                        }
 
-        <form action="" method="post">
-            <input type="hidden" name="form" value="carrito">
+                        ?>
+                    </select>
 
-            <input type="hidden" name="cantidad" id="cantidad_carrito" value="1">
+                    <button type="submit" class="btn_comprar d-block btn btn-primary w-100">Comprar</button>
+                </form>
 
-            <button type="submit" class="btn_carrito">Agregar al carrito</button>
-        </form>
+                <form action="" method="post">
+                    <input type="hidden" name="form" value="carrito">
 
-        <script>
-            let cantidad_select = document.getElementById("cantidad_select");
+                    <input type="hidden" name="cantidad" id="cantidad_carrito" value="1">
 
-            let cantidad_carrito = document.getElementById("cantidad_carrito");
+                    <button type="submit" class="btn_carrito btn btn-primary w-100">Agregar al carrito</button>
+                </form>
 
-            let btn_carrito = document.querySelector(".btn_carrito");
+                <script>
+                    let cantidad_select = document.getElementById("cantidad_select");
 
-            btn_carrito.addEventListener('click', function () {
-                cantidad_carrito.value = cantidad_select.value;
-            })
+                    let cantidad_carrito = document.getElementById("cantidad_carrito");
 
-        </script>
+                    let btn_carrito = document.querySelector(".btn_carrito");
+
+                    btn_carrito.addEventListener('click', function () {
+                        cantidad_carrito.value = cantidad_select.value;
+                    })
+
+                </script>
+            </div>
+        </section>
         <?php
     }
 
@@ -242,173 +255,185 @@ class ContenidoCliente
         // VERIFICO QUE EL CARRITO EXISTA
         $fCarrito = $this->objConsultasCarrito->selectCarrito($cod_cliente);
 
-        if (!$fCarrito) {
-            ?>
-            <p>No existe el carrito</p>
-            <?php
-        } else {
-            $id_carrito = $fCarrito["id_carrito"];
+        ?>
+        <section class="section">
+            <div class="container">
+                <?php
 
-            // VERIFICO QUE EL CARRITO TENGA ITEMS
-            $arraySelectItems = $this->objConsultasItemsCarrito->selectItemsCarrito($id_carrito);
+                if (!$fCarrito) {
+                    ?>
+                    <p>No existe el carrito</p>
+                    <?php
+                } else {
+                    $id_carrito = $fCarrito["id_carrito"];
 
-            $filas = $arraySelectItems['filas'];
+                    // VERIFICO QUE EL CARRITO TENGA ITEMS
+                    $arraySelectItems = $this->objConsultasItemsCarrito->selectItemsCarrito($id_carrito);
 
-            if ($filas == 0) {
-                echo 'No tienes productos en tu carrito';
-            }
+                    $filas = $arraySelectItems['filas'];
 
-            if ($filas == 1) {
-                $fItem = $arraySelectItems['resultado'];
-
-                ?>
-                <p><?php echo $fItem["nombre"] ?></p>
-
-                <p>Cantidad:</p>
-                <form action="" method="post" id="formCantidadCarrito">
-                    <!-- HIDDEN -->
-                    <input type="hidden" name="form" value="cantidad_carrito">
-
-                    <!-- ID PRODUCTO -->
-                    <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
-
-                    <!-- CANTIDAD -->
-                    <input type="hidden" name="cantidad" id="cantidad_hidden" value="<?php echo $fItem["cantidad"] ?>">
-
-                    <select name="cantidadCarrito" id="selectCantidad">
-                        <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
-
-                        <!-- VERIFICO EL STOCK DEL PRODUCTO -->
+                    if ($filas == 0) {
+                        ?>
+                        <p>No tienes productos en tu carrito</p>
                         <?php
-                        $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+                    }
 
-                        $stock = $fProducto["stock"];
+                    if ($filas == 1) {
+                        $fItem = $arraySelectItems['resultado'];
 
-                        // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
-                        for ($i = 1; $i < $stock + 1; $i++) {
+                        ?>
+                        <p><?php echo $fItem["nombre"] ?></p>
+
+                        <p>Cantidad:</p>
+                        <form action="" method="post" id="formCantidadCarrito">
+                            <!-- HIDDEN -->
+                            <input type="hidden" name="form" value="cantidad_carrito">
+
+                            <!-- ID PRODUCTO -->
+                            <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                            <!-- CANTIDAD -->
+                            <input type="hidden" name="cantidad" id="cantidad_hidden" value="<?php echo $fItem["cantidad"] ?>">
+
+                            <select name="cantidadCarrito" id="selectCantidad">
+                                <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+
+                                <!-- VERIFICO EL STOCK DEL PRODUCTO -->
+                                <?php
+                                $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+
+                                $stock = $fProducto["stock"];
+
+                                // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
+                                for ($i = 1; $i < $stock + 1; $i++) {
+                                    ?>
+                                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </form>
+
+                        <script>
+                            $(document).ready(function () {
+                                $('#selectCantidad').on('change', function () {
+                                    let cantidad_hidden = document.getElementById("cantidad_hidden");
+
+                                    let selectCantidad = document.getElementById("selectCantidad");
+
+                                    cantidad_hidden.value = selectCantidad.value;
+
+                                    $('#formCantidadCarrito').submit();
+
+                                });
+                            });
+                        </script>
+
+                        <!-- PARA ELIMINAR EL ITEM DEL CARRITO -->
+                        <form action="" method="post">
+                            <!-- HIDDEN -->
+                            <input type="hidden" name="form" value="delete_item">
+
+                            <!-- ID DEL PRODUCTO -->
+                            <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                            <button type="submit" class="btn btn-danger w-100">Eliminar del carrito</button>
+                        </form>
+
+                        <form action="" method="post">
+                            <input type="hidden" name="form" value="comprar_carrito">
+
+                            <button type="submit" class="btn btn-primary w-100">Comprar carrito</button>
+                        </form>
+                        <?php
+                    }
+
+                    if ($filas == 2) {
+                        $fItems = $arraySelectItems['resultados'];
+
+                        foreach ($fItems as $index => $fItem) {
+                            // Generar identificadores únicos usando el índice
+                            $formId = "formCantidadCarrito_" . $index;
+                            $selectId = "selectCantidad_" . $index;
+                            $hiddenId = "cantidad_hidden_" . $index;
                             ?>
-                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <p><?php echo $fItem["nombre"] ?></p>
+
+                            <p>Cantidad:</p>
+                            <form action="" method="post" id="<?php echo $formId; ?>">
+                                <!-- HIDDEN -->
+                                <input type="hidden" name="form" value="cantidad_carrito">
+
+                                <!-- ID PRODUCTO -->
+                                <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                                <!-- CANTIDAD -->
+                                <input type="hidden" name="cantidad" id="<?php echo $hiddenId; ?>" value="<?php echo $fItem["cantidad"] ?>">
+
+                                <select name="cantidadCarrito" id="<?php echo $selectId; ?>">
+                                    <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
+
+                                    <!-- VERIFICO EL STOCK DEL PRODUCTO -->
+                                    <?php
+                                    $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
+                                    $stock = $fProducto["stock"];
+
+                                    // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
+                                    for ($i = 1; $i < $stock + 1; $i++) {
+                                        ?>
+                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </form>
+
+                            <!-- PARA ELIMINAR EL ITEM DEL CARRITO -->
+                            <form action="" method="post">
+                                <!-- HIDDEN -->
+                                <input type="hidden" name="form" value="delete_item">
+
+                                <!-- ID DEL PRODUCTO -->
+                                <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
+
+                                <button type="submit" class="btn btn-danger w-100">Eliminar del carrito</button>
+                            </form>
                             <?php
                         }
                         ?>
-                    </select>
-                </form>
+                        <form action="" method="post">
+                            <input type="hidden" name="form" value="comprar_carrito">
+                            <button type="submit" class="btn btn-primary w-100">Comprar carrito</button>
+                        </form>
 
-                <script>
-                    $(document).ready(function () {
-                        $('#selectCantidad').on('change', function () {
-                            let cantidad_hidden = document.getElementById("cantidad_hidden");
+                        <script>
+                            $(document).ready(function () {
+                                // Añadir un evento change para cada select dinámicamente
+                                $('select[id^="selectCantidad_"]').on('change', function () {
+                                    // Obtener el índice del select actual
+                                    var index = $(this).attr('id').split('_')[1];
 
-                            let selectCantidad = document.getElementById("selectCantidad");
+                                    // Obtener los elementos específicos del formulario usando el índice
+                                    var formId = "#formCantidadCarrito_" + index;
+                                    var hiddenId = "#cantidad_hidden_" + index;
 
-                            cantidad_hidden.value = selectCantidad.value;
+                                    // Actualizar el valor del input hidden
+                                    $(hiddenId).val($(this).val());
 
-                            $('#formCantidadCarrito').submit();
+                                    // Enviar el formulario
+                                    $(formId).submit();
+                                });
+                            });
+                        </script>
+                        <?php
+                    }
 
-                        });
-                    });
-                </script>
-
-                <!-- PARA ELIMINAR EL ITEM DEL CARRITO -->
-                <form action="" method="post">
-                    <!-- HIDDEN -->
-                    <input type="hidden" name="form" value="delete_item">
-
-                    <!-- ID DEL PRODUCTO -->
-                    <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
-
-                    <button type="submit">Eliminar del carrito</button>
-                </form>
-
-                <form action="" method="post">
-                    <input type="hidden" name="form" value="comprar_carrito">
-
-                    <button type="submit">Comprar carrito</button>
-                </form>
-                <?php
-            }
-
-            if ($filas == 2) {
-                $fItems = $arraySelectItems['resultados'];
-
-                foreach ($fItems as $index => $fItem) {
-                    // Generar identificadores únicos usando el índice
-                    $formId = "formCantidadCarrito_" . $index;
-                    $selectId = "selectCantidad_" . $index;
-                    $hiddenId = "cantidad_hidden_" . $index;
-                    ?>
-                    <p><?php echo $fItem["nombre"] ?></p>
-
-                    <p>Cantidad:</p>
-                    <form action="" method="post" id="<?php echo $formId; ?>">
-                        <!-- HIDDEN -->
-                        <input type="hidden" name="form" value="cantidad_carrito">
-
-                        <!-- ID PRODUCTO -->
-                        <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
-
-                        <!-- CANTIDAD -->
-                        <input type="hidden" name="cantidad" id="<?php echo $hiddenId; ?>" value="<?php echo $fItem["cantidad"] ?>">
-
-                        <select name="cantidadCarrito" id="<?php echo $selectId; ?>">
-                            <option value="<?php echo $fItem["cantidad"] ?>"><?php echo $fItem["cantidad"] ?></option>
-
-                            <!-- VERIFICO EL STOCK DEL PRODUCTO -->
-                            <?php
-                            $fProducto = $this->objConsultasProductos->selectProducto($fItem["cod_producto"]);
-                            $stock = $fProducto["stock"];
-
-                            // MUESTRO LAS DEMÁS CANTIDADES POSIBLES
-                            for ($i = 1; $i < $stock + 1; $i++) {
-                                ?>
-                                <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-                    </form>
-
-                    <!-- PARA ELIMINAR EL ITEM DEL CARRITO -->
-                    <form action="" method="post">
-                        <!-- HIDDEN -->
-                        <input type="hidden" name="form" value="delete_item">
-
-                        <!-- ID DEL PRODUCTO -->
-                        <input type="hidden" name="id_producto" value="<?php echo $fItem["cod_producto"] ?>">
-
-                        <button type="submit">Eliminar del carrito</button>
-                    </form>
-                    <?php
                 }
+
                 ?>
-                <form action="" method="post">
-                    <input type="hidden" name="form" value="comprar_carrito">
-                    <button type="submit">Comprar carrito</button>
-                </form>
-
-                <script>
-                    $(document).ready(function () {
-                        // Añadir un evento change para cada select dinámicamente
-                        $('select[id^="selectCantidad_"]').on('change', function () {
-                            // Obtener el índice del select actual
-                            var index = $(this).attr('id').split('_')[1];
-
-                            // Obtener los elementos específicos del formulario usando el índice
-                            var formId = "#formCantidadCarrito_" + index;
-                            var hiddenId = "#cantidad_hidden_" + index;
-
-                            // Actualizar el valor del input hidden
-                            $(hiddenId).val($(this).val());
-
-                            // Enviar el formulario
-                            $(formId).submit();
-                        });
-                    });
-                </script>
-                <?php
-            }
-
-        }
+            </div>
+        </section>
+        <?php
     }
 
     // HOME.PHP
