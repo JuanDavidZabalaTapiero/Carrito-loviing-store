@@ -1,7 +1,7 @@
 <?php
 
 // CONSULTAS USUARIOS
-require_once (__DIR__ . '/../../Models/iniciarSesion.php');
+require_once (__DIR__ . '/../Models/iniciarSesion.php');
 
 class IniciarSesionController
 {

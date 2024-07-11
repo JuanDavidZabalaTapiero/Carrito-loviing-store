@@ -149,7 +149,7 @@
 							</ul>
 							<ul class="navbar-nav ml-auto mt-10">
 								<li class="nav-item">
-									<a class="nav-link login-button" href="Views/Extras/iniciarSesion.html">Login</a>
+									<a class="nav-link login-button" href="Views/Extras/iniciarSesion.php">Login</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link text-white add-button" href="ad-listing.html"><i

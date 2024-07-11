@@ -21,6 +21,6 @@
 // $objDeleteItemCarritoController = new DeleteItemCarritoController();
 // $objDeleteItemCarritoController->deleteItemCarrito(1, 1);
 
-require_once (__DIR__ . '/Cliente/iniciarSesionController.php');
+require_once (__DIR__ . '/iniciarSesionController.php');
 $objIniciarSesion = new IniciarSesionController();
 $objIniciarSesion->iniciarSesion('Juan');

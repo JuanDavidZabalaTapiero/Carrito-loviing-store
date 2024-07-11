@@ -24,7 +24,7 @@ class IniciarSesion
 
             $_SESSION["id_user"] = $fUser["id_user"];
 
-            header('location: ../Views/Cliente/home.php');
+            header('location: ../Cliente/home.php');
         }
     }
 }
