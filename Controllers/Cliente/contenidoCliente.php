@@ -162,7 +162,7 @@ class ContenidoCliente
 
                                     <li class="nav-item <?php echo ($current_page_name == "carrito.php") ? 'active' : ''; ?>">
                                         <a class="nav-link" href="carrito.php">
-                                            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ca5d1e;"></i>
+                                            <i class="fa-solid fa-cart-shopping fa-lg"></i>
                                         </a>
                                     </li>
 
@@ -175,7 +175,7 @@ class ContenidoCliente
 
                                         <!-- Dropdown list -->
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="../../index.php"><i
+                                            <li><a class="dropdown-item" href="../../Controllers/cerrarSesionController.php"><i
                                                         class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
                                         </ul>
                                     </li>

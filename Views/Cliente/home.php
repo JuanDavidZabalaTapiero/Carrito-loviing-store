@@ -1,4 +1,6 @@
 <?php
+// PARA SEGURIDAD
+require_once (__DIR__ . '/../../Controllers/seguridadAccesoController.php');
 
 $current_page_name = basename($_SERVER['PHP_SELF']);
 

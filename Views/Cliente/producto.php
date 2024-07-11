@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+// PARA SEGURIDAD
+require_once (__DIR__ . '/../../Controllers/seguridadAccesoController.php');
+
+// ID DEL CLIENTE
 $id_cliente = $_SESSION["id_user"];
 
 $id_producto = $_GET["id_producto"];

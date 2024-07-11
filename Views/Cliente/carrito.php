@@ -1,6 +1,10 @@
 <?php
 
-$id_cliente = 1;
+// PARA SEGURIDAD
+require_once (__DIR__ . '/../../Controllers/seguridadAccesoController.php');
+
+// ID DEL USUARIO
+$id_cliente = $_SESSION["id_user"];
 
 $current_page_name = basename($_SERVER['PHP_SELF']);
 

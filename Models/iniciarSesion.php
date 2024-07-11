@@ -22,7 +22,11 @@ class IniciarSesion
         } else {
             session_start();
 
+            // ID DEL USUARIO
             $_SESSION["id_user"] = $fUser["id_user"];
+
+            // PARA LA SEGURIDAD DE ACCESO
+            $_SESSION["aut"] = "Si";
 
             header('location: ../Cliente/home.php');
         }
