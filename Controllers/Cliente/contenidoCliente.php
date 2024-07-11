@@ -458,52 +458,14 @@ class ContenidoCliente
             // FETCH DEL PRODUCTO
             $fProducto = $arraySelectProductos['resultado'];
 
-            ?>
-            <div class="col-sm-12 col-lg-4">
-                <!-- product card -->
-                <div class="product-item bg-light">
-                    <div class="card">
-                        <div class="thumb-content">
-                            <!-- <div class="price">$200</div> -->
-                            <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
-                                <img class="card-img-top img-fluid" src="../website_externo/images/products/products-1.jpg"
-                                    alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
-                            <ul class="list-inline product-meta">
-                                <li class="list-inline-item">
-                                    <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-                                </li>
-                            </ul>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Explicabo, aliquam!</p>
-                            <div class="product-ratings">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
-        }
+            $stock = $fProducto["stock"];
 
-        if ($filas == 2) {
-            $fProductos = $arraySelectProductos['resultados'];
+            // VERIFICO SI EL STOCK DEL PRODUCTO ES 0
+            if ($stock == 0) {
 
-            foreach ($fProductos as $fProducto) {
+            } else {
                 ?>
-                <div class="col-sm-12 col-lg-4">
+                <div class="col-sm-12 col-lg-12">
                     <!-- product card -->
                     <div class="product-item bg-light">
                         <div class="card">
@@ -540,6 +502,59 @@ class ContenidoCliente
                     </div>
                 </div>
                 <?php
+            }
+        }
+
+        if ($filas == 2) {
+            $fProductos = $arraySelectProductos['resultados'];
+
+            foreach ($fProductos as $fProducto) {
+
+                // VERIFICO SI EL STOCK DEL PRODUCTO ES 0
+                $stock = $fProducto["stock"];
+
+                if ($stock == 0) {
+
+                } else {
+                    ?>
+                    <div class="col-sm-12 col-lg-12">
+                        <!-- product card -->
+                        <div class="product-item bg-light">
+                            <div class="card">
+                                <div class="thumb-content">
+                                    <!-- <div class="price">$200</div> -->
+                                    <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
+                                        <img class="card-img-top img-fluid" src="../website_externo/images/products/products-1.jpg"
+                                            alt="Card image cap">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
+                                    <ul class="list-inline product-meta">
+                                        <li class="list-inline-item">
+                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
+                                        </li>
+                                    </ul>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Explicabo, aliquam!</p>
+                                    <div class="product-ratings">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
             }
         }
     }
