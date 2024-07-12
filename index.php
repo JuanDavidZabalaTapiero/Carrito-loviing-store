@@ -1,3 +1,10 @@
+<?php
+
+// MAIN CONTENIDO
+require_once (__DIR__ . '/Controllers/contenidoMain.php');
+$objContenidoMain = new ContenidoMain();
+
+?>
 <!DOCTYPE html>
 
 <!--
@@ -55,8 +62,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<nav class="navbar navbar-expand-lg navbar-light navigation">
-						<a class="navbar-brand" href="index.html">
-							<img src="Views/website_externo/images/logo.png" alt="">
+						<a class="navbar-brand" href="index.php">
+							<h2>Loviing Store</h2>
 						</a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -66,86 +73,25 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto main-nav ">
 								<li class="nav-item active">
-									<a class="nav-link" href="index.html">Home</a>
+									<a class="nav-link" href="index.php">Inicio</a>
 								</li>
-								<li class="nav-item dropdown dropdown-slide @@dashboard">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown"
-										href="#!">Dashboard<span><i class="fa fa-angle-down"></i></span>
-									</a>
 
-									<!-- Dropdown list -->
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item @@dashboardPage" href="dashboard.html">Dashboard</a>
-										</li>
-										<li><a class="dropdown-item @@dashboardMyAds"
-												href="dashboard-my-ads.html">Dashboard My Ads</a></li>
-										<li><a class="dropdown-item @@dashboardFavouriteAds"
-												href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a></li>
-										<li><a class="dropdown-item @@dashboardArchivedAds"
-												href="dashboard-archived-ads.html">Dashboard Archived Ads</a></li>
-										<li><a class="dropdown-item @@dashboardPendingAds"
-												href="dashboard-pending-ads.html">Dashboard Pending Ads</a></li>
-
-										<li class="dropdown dropdown-submenu dropright">
-											<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501"
-												role="button" data-toggle="dropdown" aria-haspopup="true"
-												aria-expanded="false">Sub Menu</a>
-
-											<ul class="dropdown-menu" aria-labelledby="dropdown0501">
-												<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-												<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-											</ul>
-										</li>
-									</ul>
-								</li>
 								<li class="nav-item dropdown dropdown-slide @@pages">
 									<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">
-										Pages <span><i class="fa fa-angle-down"></i></span>
+										Extra<span><i class="fa fa-angle-down"></i></span>
 									</a>
 									<!-- Dropdown list -->
 									<ul class="dropdown-menu">
-										<li><a class="dropdown-item @@about" href="about-us.html">About Us</a></li>
-										<li><a class="dropdown-item @@contact" href="contact-us.html">Contact Us</a>
+										<li><a class="dropdown-item @@about" href="about-us.html">Sobre nosotros</a>
 										</li>
-										<li><a class="dropdown-item @@profile" href="user-profile.html">User Profile</a>
+										<li><a class="dropdown-item @@contact" href="contact-us.html">Contacto</a>
 										</li>
-										<li><a class="dropdown-item @@404" href="404.html">404 Page</a></li>
-										<li><a class="dropdown-item @@package" href="package.html">Package</a></li>
-										<li><a class="dropdown-item @@singlePage" href="single.html">Single Page</a>
-										</li>
-										<li><a class="dropdown-item @@store" href="store.html">Store Single</a></li>
-										<li><a class="dropdown-item @@blog" href="blog.html">Blog</a></li>
-										<li><a class="dropdown-item @@singleBlog" href="single-blog.html">Blog
-												Details</a></li>
-										<li><a class="dropdown-item @@terms" href="terms-condition.html">Terms &amp;
-												Conditions</a></li>
+										<li><a class="dropdown-item @@terms" href="terms-condition.html">Términos y
+												condiciones</a></li>
 									</ul>
 								</li>
-								<li class="nav-item dropdown dropdown-slide @@listing">
-									<a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false">
-										Listing <span><i class="fa fa-angle-down"></i></span>
-									</a>
-									<!-- Dropdown list -->
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item @@category" href="category.html">Ad-Gird View</a>
-										</li>
-										<li><a class="dropdown-item @@listView" href="ad-list-view.html">Ad-List
-												View</a></li>
 
-										<li class="dropdown dropdown-submenu dropleft">
-											<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0201"
-												role="button" data-toggle="dropdown" aria-haspopup="true"
-												aria-expanded="false">Sub Menu</a>
-
-											<ul class="dropdown-menu" aria-labelledby="dropdown0201">
-												<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-												<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-											</ul>
-										</li>
-									</ul>
-								</li>
 							</ul>
 							<ul class="navbar-nav ml-auto mt-10">
 								<li class="nav-item">
@@ -174,30 +120,8 @@
 				<div class="col-md-12">
 					<!-- Header Contetnt -->
 					<div class="content-block">
-						<h1>Buy & Sell Near You </h1>
-						<p>Join the millions who buy and sell from each other <br> everyday in local communities around
-							the world</p>
-						<div class="short-popular-category-list text-center">
-							<h2>Popular Category</h2>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a href="category.html"><i class="fa fa-bed"></i> Hotel</a>
-								</li>
-								<li class="list-inline-item">
-									<a href="category.html"><i class="fa fa-grav"></i> Fitness</a>
-								</li>
-								<li class="list-inline-item">
-									<a href="category.html"><i class="fa fa-car"></i> Cars</a>
-								</li>
-								<li class="list-inline-item">
-									<a href="category.html"><i class="fa fa-cutlery"></i> Restaurants</a>
-								</li>
-								<li class="list-inline-item">
-									<a href="category.html"><i class="fa fa-coffee"></i> Cafe</a>
-								</li>
-							</ul>
-						</div>
-
+						<h1>Loviing Store</h1>
+						<p>Tienda Online</p>
 					</div>
 					<!-- Advance Search -->
 					<div class="advance-search">
@@ -206,11 +130,11 @@
 								<div class="col-lg-12 col-md-12 align-content-center">
 									<form>
 										<div class="form-row">
-											<div class="form-group col-xl-4 col-lg-3 col-md-6">
+											<div class="form-group col-xl-6 col-lg-4 col-md-12">
 												<input type="text" class="form-control my-2 my-lg-1" id="inputtext4"
 													placeholder="What are you looking for">
 											</div>
-											<div class="form-group col-lg-3 col-md-6">
+											<div class="form-group col-xl-4 col-lg-4 col-md-12">
 												<select class="w-100 form-control mt-lg-1 mt-md-2">
 													<option>Category</option>
 													<option value="1">Top rated</option>
@@ -218,11 +142,7 @@
 													<option value="4">Highest Price</option>
 												</select>
 											</div>
-											<div class="form-group col-lg-3 col-md-6">
-												<input type="text" class="form-control my-2 my-lg-1" id="inputLocation4"
-													placeholder="Location">
-											</div>
-											<div class="form-group col-xl-2 col-lg-3 col-md-6 align-self-center">
+											<div class="form-group col-xl-2 col-lg-4 col-md-12 align-self-center">
 												<button type="submit" class="btn btn-primary active w-100">Search
 													Now</button>
 											</div>
@@ -246,177 +166,12 @@
 	<section class="popular-deals section bg-gray">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title">
-						<h2>Trending Adds</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
 				<!-- offer 01 -->
 				<div class="col-lg-12">
 					<div class="trending-ads-slide">
-						<div class="col-sm-12 col-lg-4">
-							<!-- product card -->
-							<div class="product-item bg-light">
-								<div class="card">
-									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="single.html">
-											<img class="card-img-top img-fluid"
-												src="Views/website_externo/images/products/products-1.jpg"
-												alt="Card image cap">
-										</a>
-									</div>
-									<div class="card-body">
-										<h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-										<ul class="list-inline product-meta">
-											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-											</li>
-											<li class="list-inline-item">
-												<a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-											</li>
-										</ul>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-											Explicabo, aliquam!</p>
-										<div class="product-ratings">
-											<ul class="list-inline">
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-						</div>
-						<div class="col-sm-12 col-lg-4">
-							<!-- product card -->
-							<div class="product-item bg-light">
-								<div class="card">
-									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="single.html">
-											<img class="card-img-top img-fluid"
-												src="Views/website_externo/images/products/products-2.jpg"
-												alt="Card image cap">
-										</a>
-									</div>
-									<div class="card-body">
-										<h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
-										<ul class="list-inline product-meta">
-											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-											</li>
-											<li class="list-inline-item">
-												<a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-											</li>
-										</ul>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-											Explicabo, aliquam!</p>
-										<div class="product-ratings">
-											<ul class="list-inline">
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-						</div>
-						<div class="col-sm-12 col-lg-4">
-							<!-- product card -->
-							<div class="product-item bg-light">
-								<div class="card">
-									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="single.html">
-											<img class="card-img-top img-fluid"
-												src="Views/website_externo/images/products/products-3.jpg"
-												alt="Card image cap">
-										</a>
-									</div>
-									<div class="card-body">
-										<h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-										<ul class="list-inline product-meta">
-											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-											</li>
-											<li class="list-inline-item">
-												<a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-											</li>
-										</ul>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-											Explicabo, aliquam!</p>
-										<div class="product-ratings">
-											<ul class="list-inline">
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-						</div>
-						<div class="col-sm-12 col-lg-4">
-							<!-- product card -->
-							<div class="product-item bg-light">
-								<div class="card">
-									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="single.html">
-											<img class="card-img-top img-fluid"
-												src="Views/website_externo/images/products/products-2.jpg"
-												alt="Card image cap">
-										</a>
-									</div>
-									<div class="card-body">
-										<h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
-										<ul class="list-inline product-meta">
-											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-											</li>
-											<li class="list-inline-item">
-												<a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-											</li>
-										</ul>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-											Explicabo, aliquam!</p>
-										<div class="product-ratings">
-											<ul class="list-inline">
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-						</div>
+						<?php
+						$objContenidoMain->showMainProducts();
+						?>
 					</div>
 				</div>
 			</div>

@@ -410,7 +410,7 @@ button {
 
 .overly:before {
   content: "";
-  background: rgba(0, 0, 0, 0.51);
+  background: rgba(0, 0, 0, 0.175);
   position: absolute;
   top: 0;
   left: 0;
@@ -673,7 +673,7 @@ ul.pagination .active a {
 }
 
 .bg-1 {
-  background: url("../images/home/hero.jpg");
+  background: url("https://raw.githubusercontent.com/JuanDavidZabalaTapiero/ImagenesLoviingStore/main/LS2/MAIN/Hero-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
 }
