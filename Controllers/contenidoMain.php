@@ -47,7 +47,7 @@ class ContenidoMain
                             <div class="thumb-content">
                                 <!-- <div class="price">$200</div> -->
                                 <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
-                                    <img class="card-img-top img-fluid" src="https://i.imgur.com/1LTqG21.png"
+                                    <img class="card-img-top img-fluid" src="Uploads/Productos/<?php echo $fProducto["foto1_producto"] ?>"
                                         alt="Card image cap">
                                 </a>
                             </div>
