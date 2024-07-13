@@ -28,7 +28,19 @@ class IniciarSesion
             // PARA LA SEGURIDAD DE ACCESO
             $_SESSION["aut"] = "Si";
 
-            header('location: ../Cliente/home.php');
+            $rol = $fUser["rol"];
+
+            switch ($rol) {
+                case 'Cliente':
+                    header('location: ../Cliente/home.php');
+                    break;
+
+                case 'Admin':
+                    header('location: ../Admin/home.php');
+                    break;
+            }
+
+
         }
     }
 }
