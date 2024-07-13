@@ -13,6 +13,62 @@ class ContenidoMain
         $this->objConsultasProductos = new ConsultasProductos();
     }
 
+    // HEADER
+    public function showMainHeader($links)
+    {
+        ?>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light navigation">
+                            <a class="navbar-brand" href="<?php echo $links['index.php'] ?>">
+                                <h2>Loviing Store</h2>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto main-nav ">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="<?php echo $links['index.php'] ?>">Inicio</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown dropdown-slide @@pages">
+                                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Extra<span><i class="fa fa-angle-down"></i></span>
+                                        </a>
+                                        <!-- Dropdown list -->
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item @@about" href="#">Sobre nosotros</a>
+                                            </li>
+                                            <li><a class="dropdown-item @@contact" href="#">Contacto</a>
+                                            </li>
+                                            <li><a class="dropdown-item @@terms" href="#">Términos y
+                                                    condiciones</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <ul class="navbar-nav ml-auto mt-10">
+                                    <li class="nav-item">
+                                        <a class="nav-link login-button"
+                                            href="<?php echo $links['iniciarSesion.php'] ?>">Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <?php
+    }
+
+    // PRODUCTOS
     public function showMainProducts()
     {
         // CONSULTO TODOS LOS PRODUCTOS
@@ -45,33 +101,9 @@ class ContenidoMain
                     <div class="product-item bg-light">
                         <div class="card">
                             <div class="thumb-content">
-                                <!-- <div class="price">$200</div> -->
-                                <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
-                                    <img class="card-img-top img-fluid" src="Uploads/Productos/<?php echo $fProducto["foto1_producto"] ?>"
-                                        alt="Card image cap">
-                                </a>
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
-                                <ul class="list-inline product-meta">
-                                    <li class="list-inline-item">
-                                        <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-                                    </li>
-                                </ul>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Explicabo, aliquam!</p>
-                                <div class="product-ratings">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -97,33 +129,11 @@ class ContenidoMain
                         <div class="product-item bg-light">
                             <div class="card">
                                 <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
-                                        <img class="card-img-top img-fluid" src="../website_externo/images/products/products-1.jpg"
-                                            alt="Card image cap">
-                                    </a>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
+                                    <h4 class="card-title"><a
+                                            href="Views/website_externo/producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre"] ?></a>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -132,5 +142,42 @@ class ContenidoMain
                 }
             }
         }
+    }
+
+    // FOOTER
+    public function showMainFooter()
+    {
+        ?>
+        <footer class="footer-bottom">
+            <!-- Container Start -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
+                        <!-- Copyright -->
+                        <div class="copyright">
+                            <p>Copyright &copy;
+                                <script>
+                                    var CurrentYear = new Date().getFullYear()
+                                    document.write(CurrentYear)
+                                </script> Loviing Store
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Social Icons -->
+                        <ul class="social-media-icons text-center text-lg-right">
+                            <li><a class="fa-brands fa-facebook-f" href="https://www.facebook.com/themefisher"></a></li>
+                            <li><a class="fa-brands fa-x-twitter" href="https://www.twitter.com/themefisher"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Container End -->
+            <!-- To Top -->
+            <div class="scroll-top-to">
+                <i class="fa fa-angle-up"></i>
+            </div>
+        </footer>
+        <?php
     }
 }

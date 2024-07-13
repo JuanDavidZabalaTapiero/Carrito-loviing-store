@@ -66,7 +66,7 @@ class ContenidoCliente
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light navigation">
                             <a class="navbar-brand" href="home.php">
-                                <img src="../website_externo/images/logo.png" alt="">
+                                <h2>Loviing Store</h2>
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -79,91 +79,19 @@ class ContenidoCliente
                                         <a class="nav-link" href="home.php">Home</a>
                                     </li>
 
-                                    <li class="nav-item dropdown dropdown-slide @@dashboard">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!">Dashboard<span><i
-                                                    class="fa fa-angle-down"></i></span>
-                                        </a>
-
-                                        <!-- Dropdown list -->
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item @@dashboardPage" href="dashboard.html">Dashboard</a>
-                                            </li>
-                                            <li><a class="dropdown-item @@dashboardMyAds" href="dashboard-my-ads.html">Dashboard
-                                                    My Ads</a></li>
-                                            <li><a class="dropdown-item @@dashboardFavouriteAds"
-                                                    href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a></li>
-                                            <li><a class="dropdown-item @@dashboardArchivedAds"
-                                                    href="dashboard-archived-ads.html">Dashboard Archived Ads</a></li>
-                                            <li><a class="dropdown-item @@dashboardPendingAds"
-                                                    href="dashboard-pending-ads.html">Dashboard Pending Ads</a></li>
-
-                                            <li class="dropdown dropdown-submenu dropright">
-                                                <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501"
-                                                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">Sub Menu</a>
-
-                                                <ul class="dropdown-menu" aria-labelledby="dropdown0501">
-                                                    <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                                                    <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-
                                     <li class="nav-item dropdown dropdown-slide @@pages">
                                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
-                                            Pages <span><i class="fa fa-angle-down"></i></span>
+                                            Extra <span><i class="fa fa-angle-down"></i></span>
                                         </a>
                                         <!-- Dropdown list -->
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item @@about" href="about-us.html">About Us</a></li>
-                                            <li><a class="dropdown-item @@contact" href="contact-us.html">Contact Us</a>
+                                            <li><a class="dropdown-item @@about" href="about-us.html">Sobre nosotros</a></li>
+                                            <li><a class="dropdown-item @@contact" href="contact-us.html">Contácto</a>
                                             </li>
-                                            <li><a class="dropdown-item @@profile" href="user-profile.html">User Profile</a>
-                                            </li>
-                                            <li><a class="dropdown-item @@404" href="404.html">404 Page</a></li>
-                                            <li><a class="dropdown-item @@package" href="package.html">Package</a></li>
-                                            <li><a class="dropdown-item @@singlePage" href="single.html">Single Page</a>
-                                            </li>
-                                            <li><a class="dropdown-item @@store" href="store.html">Store Single</a></li>
-                                            <li><a class="dropdown-item @@blog" href="blog.html">Blog</a></li>
-                                            <li><a class="dropdown-item @@singleBlog" href="single-blog.html">Blog
-                                                    Details</a></li>
-                                            <li><a class="dropdown-item @@terms" href="terms-condition.html">Terms &amp;
-                                                    Conditions</a></li>
+                                            <li><a class="dropdown-item @@terms" href="terms-condition.html">Términos y
+                                                    condiciones</a></li>
                                         </ul>
-                                    </li>
-
-                                    <li class="nav-item dropdown dropdown-slide @@listing">
-                                        <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            Listing <span><i class="fa fa-angle-down"></i></span>
-                                        </a>
-                                        <!-- Dropdown list -->
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item @@category" href="category.html">Ad-Gird View</a>
-                                            </li>
-                                            <li><a class="dropdown-item @@listView" href="ad-list-view.html">Ad-List
-                                                    View</a></li>
-
-                                            <li class="dropdown dropdown-submenu dropleft">
-                                                <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0201"
-                                                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">Sub Menu</a>
-
-                                                <ul class="dropdown-menu" aria-labelledby="dropdown0201">
-                                                    <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                                                    <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="nav-item <?php echo ($current_page_name == "carrito.php") ? 'active' : ''; ?>">
-                                        <a class="nav-link" href="carrito.php">
-                                            <i class="fa-solid fa-cart-shopping fa-lg"></i>
-                                        </a>
                                     </li>
 
                                     <!-- PERFIL DEL CLIENTE -->
@@ -182,12 +110,10 @@ class ContenidoCliente
                                 </ul>
 
                                 <ul class="navbar-nav ml-auto mt-10">
-                                    <li class="nav-item">
-                                        <a class="nav-link login-button" href="login.html">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                                class="fa fa-plus-circle"></i> Add Listing</a>
+                                    <li class="nav-item <?php echo ($current_page_name == "carrito.php") ? 'active' : ''; ?>">
+                                        <a class="nav-link" href="carrito.php">
+                                            <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -483,33 +409,11 @@ class ContenidoCliente
                     <div class="product-item bg-light">
                         <div class="card">
                             <div class="thumb-content">
-                                <!-- <div class="price">$200</div> -->
-                                <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
-                                    <img class="card-img-top img-fluid" src="../website_externo/images/products/products-1.jpg"
-                                        alt="Card image cap">
-                                </a>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
-                                <ul class="list-inline product-meta">
-                                    <li class="list-inline-item">
-                                        <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-                                    </li>
-                                </ul>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Explicabo, aliquam!</p>
-                                <div class="product-ratings">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
+                                <h4 class="card-title"><a
+                                        href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre"] ?></a>
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -535,33 +439,9 @@ class ContenidoCliente
                         <div class="product-item bg-light">
                             <div class="card">
                                 <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>">
-                                        <img class="card-img-top img-fluid" src="../website_externo/images/products/products-1.jpg"
-                                            alt="Card image cap">
-                                    </a>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="category.html"><i class="fa fa-calendar"></i>26th December</a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>

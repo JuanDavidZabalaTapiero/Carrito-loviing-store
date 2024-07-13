@@ -56,54 +56,14 @@ $objContenidoMain = new ContenidoMain();
 </head>
 
 <body class="body-wrapper">
+	<?php
+	$links = [
+		'index.php' => 'index.php',
+		'iniciarSesion.php' => 'Views/Extras/iniciarSesion.php'
+	];
 
-	<header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<nav class="navbar navbar-expand-lg navbar-light navigation">
-						<a class="navbar-brand" href="index.php">
-							<h2>Loviing Store</h2>
-						</a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse"
-							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-							aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto main-nav ">
-								<li class="nav-item active">
-									<a class="nav-link" href="index.php">Inicio</a>
-								</li>
-
-								<li class="nav-item dropdown dropdown-slide @@pages">
-									<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false">
-										Extra<span><i class="fa fa-angle-down"></i></span>
-									</a>
-									<!-- Dropdown list -->
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item @@about" href="about-us.html">Sobre nosotros</a>
-										</li>
-										<li><a class="dropdown-item @@contact" href="contact-us.html">Contacto</a>
-										</li>
-										<li><a class="dropdown-item @@terms" href="terms-condition.html">Términos y
-												condiciones</a></li>
-									</ul>
-								</li>
-
-							</ul>
-							<ul class="navbar-nav ml-auto mt-10">
-								<li class="nav-item">
-									<a class="nav-link login-button" href="Views/Extras/iniciarSesion.php">Login</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
+	$objContenidoMain->showMainHeader($links);
+	?>
 
 	<!--===============================
 	=            Hero Area            =
@@ -128,19 +88,19 @@ $objContenidoMain = new ContenidoMain();
 										<div class="form-row">
 											<div class="form-group col-xl-6 col-lg-4 col-md-12">
 												<input type="text" class="form-control my-2 my-lg-1" id="inputtext4"
-													placeholder="What are you looking for">
+													placeholder="Busca tus productos aquí">
 											</div>
 											<div class="form-group col-xl-4 col-lg-4 col-md-12">
 												<select class="w-100 form-control mt-lg-1 mt-md-2">
-													<option>Category</option>
+													<option>Categorías</option>
 													<option value="1">Top rated</option>
 													<option value="2">Lowest Price</option>
 													<option value="4">Highest Price</option>
 												</select>
 											</div>
 											<div class="form-group col-xl-2 col-lg-4 col-md-12 align-self-center">
-												<button type="submit" class="btn btn-primary active w-100">Search
-													Now</button>
+												<button type="submit"
+													class="btn btn-primary active w-100">Buscar</button>
 											</div>
 										</div>
 									</form>
@@ -175,36 +135,9 @@ $objContenidoMain = new ContenidoMain();
 	</section>
 
 	<!-- Footer Bottom -->
-	<footer class="footer-bottom">
-		<!-- Container Start -->
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
-					<!-- Copyright -->
-					<div class="copyright">
-						<p>Copyright &copy;
-							<script>
-								var CurrentYear = new Date().getFullYear()
-								document.write(CurrentYear)
-							</script> Loviing Store
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<!-- Social Icons -->
-					<ul class="social-media-icons text-center text-lg-right">
-						<li><a class="fa-brands fa-facebook-f" href="https://www.facebook.com/themefisher"></a></li>
-						<li><a class="fa-brands fa-x-twitter" href="https://www.twitter.com/themefisher"></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- Container End -->
-		<!-- To Top -->
-		<div class="scroll-top-to">
-			<i class="fa fa-angle-up"></i>
-		</div>
-	</footer>
+	<?php
+	$objContenidoMain->showMainFooter();
+	?>
 
 	<!-- Essential Scripts
 	 =====================================-->
