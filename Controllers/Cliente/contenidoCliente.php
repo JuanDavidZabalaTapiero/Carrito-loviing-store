@@ -441,7 +441,7 @@ class ContenidoCliente
                                 <div class="thumb-content">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html"><?php echo $fProducto["nombre"] ?></a></h4>
+                                    <h4 class="card-title"><a href="producto.php?id_producto=<?php echo $fProducto["id_producto"] ?>"><?php echo $fProducto["nombre"] ?></a></h4>
                                 </div>
                             </div>
                         </div>
