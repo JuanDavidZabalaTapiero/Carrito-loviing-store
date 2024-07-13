@@ -31,6 +31,21 @@ class ConsultasUsuarios
         return $fUser;
     }
 
+    public function selectUsuarioId($id_user)
+    {
+        $selectUsuario = "SELECT * FROM usuarios WHERE id_user = :id_user";
+
+        $bindValues = [
+            ':id_user' => $id_user
+        ];
+
+        $resultSelectUsuario = $this->objPrepararConsulta->prepararConsulta($selectUsuario, $bindValues);
+
+        $fUser = $resultSelectUsuario->fetch();
+
+        return $fUser;
+    }
+
     // UPDATE
 
     // DELETE
