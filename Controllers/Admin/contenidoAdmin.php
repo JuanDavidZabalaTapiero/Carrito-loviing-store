@@ -3,14 +3,21 @@
 // CONSULTAS DE USUARIOS
 require_once (__DIR__ . '/../../Models/consultasUsuarios.php');
 
+require_once (__DIR__ . '/../../Models/consultasProductos.php');
+
 class ContenidoAdmin
 {
     // PARA CONSULTAS DE USUARIOS
     public $objConsultasUsuarios;
 
+    // PARA CONSULTAS DE PRODUCTOS
+    public $objConsultasProductos;
+
     public function __construct()
     {
         $this->objConsultasUsuarios = new ConsultasUsuarios();
+
+        $this->objConsultasProductos = new ConsultasProductos();
     }
 
     // LINKS
@@ -132,7 +139,7 @@ class ContenidoAdmin
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="index.html">
+                    <a class="nav-link " href="home.php">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -150,7 +157,7 @@ class ContenidoAdmin
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="registrarProducto.php">
                                 <i class="bi bi-circle"></i><span>Registrar</span>
                             </a>
                         </li>
@@ -160,6 +167,53 @@ class ContenidoAdmin
             </ul>
         </aside><!-- End Sidebar-->
         <?php
+    }
+
+    // tblProductos.php
+    // MAIN
+    public function showTblProductos()
+    {
+        $arraySelectProductos = $this->objConsultasProductos->selectProductos();
+
+        $filas = $arraySelectProductos['filas'];
+
+        if ($filas == 0) {
+            ?>
+            <tr>
+                <td colspan="3">No hay productos registrados</td>
+            </tr>
+            <?php
+        }
+
+        if ($filas == 1) {
+            $fProducto = $arraySelectProductos['resultado'];
+
+            ?>
+            <tr>
+                <td><?php echo $fProducto['id_producto'] ?></td>
+                <td><?php echo $fProducto['nombre'] ?></td>
+                <td><?php echo $fProducto['stock'] ?></td>
+                <td><a class="btn btn-primary" href="">Editar</a></td>
+                <td><a class="btn btn-danger" href="">Eliminar</a></td>
+            </tr>
+            <?php
+        }
+
+        if ($filas == 2) {
+            $fProductos = $arraySelectProductos['resultados'];
+
+            foreach ($fProductos as $fProducto) {
+                ?>
+                <tr>
+                    <td><?php echo $fProducto['id_producto'] ?></td>
+                    <td><?php echo $fProducto['nombre'] ?></td>
+                    <td><?php echo $fProducto['stock'] ?></td>
+                    <td><a class="btn btn-primary" href="">Editar</a></td>
+                    <td><a class="btn btn-danger" href="">Eliminar</a></td>
+                </tr>
+                <?php
+            }
+        }
     }
 
     // FOOTER

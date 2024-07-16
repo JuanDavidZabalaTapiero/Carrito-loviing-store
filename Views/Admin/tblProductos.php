@@ -44,17 +44,39 @@ $objContenidoAdmin = new ContenidoAdmin();
     ?>
 
     <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
 
-        <div class="pagetitle">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tabla de productos</h5>
 
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Stock</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $objContenidoAdmin->showTblProductos();
+                                    ?>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main><!-- End #main -->
 
     <?php

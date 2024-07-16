@@ -12,6 +12,19 @@ class ConsultasProductos
     }
 
     // CREATE
+    public function insertProducto($nombre_producto, $stock_producto)
+    {
+        $insertProducto = "INSERT INTO productos(nombre, stock) VALUES (:nombre, :stock)";
+
+        $bindValues = [
+            ':nombre' => $nombre_producto,
+            ':stock' => $stock_producto
+        ];
+
+        $this->objPrepararConsulta->prepararConsulta($insertProducto, $bindValues);
+
+        echo 'Producto registrado';
+    }
 
     // READ
     public function selectProducto($id_producto)
